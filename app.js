@@ -1,3 +1,5 @@
+//Changes the active class of the nav items when the user scrolls
+
 // Get all the nav items
 var navItems = document.querySelectorAll('.nav-item');
 
@@ -43,13 +45,16 @@ window.addEventListener('load', updateActiveNavItem);
 window.addEventListener('scroll', updateActiveNavItem);
 
 
+
+//Background Mouse Move Effect
+
 const blob = document.getElementById('blob');
 
 document.body.onpointermove = event => {
-    const { clientX, clientY } = event;
+    const { pageX, pageY } = event;
 
     blob.animate({
-        left: `${clientX}px`,
-        top: `${clientY}px`
+        left: `${pageX}px`,
+        top: `${pageY}px`
     }, {duration: 3000, fill: 'forwards'});
-    };
+};
