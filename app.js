@@ -77,10 +77,7 @@ function drawLines() {
         svg.removeChild(svg.firstChild);
     }
 
-    var skillsSection = document.getElementById('skills');
-    if (!isElementInViewport(skillsSection)) {
-        return; // Exit the function if the #skills section is not in the viewport
-    }
+    // Removed the viewport check
 
     var centerSkill = document.getElementById('skill-1').getBoundingClientRect();
     var centerX = centerSkill.left + centerSkill.width / 2;
@@ -88,7 +85,7 @@ function drawLines() {
 
     var skills = document.getElementsByClassName('skill');
     for (var i = 0; i < skills.length; i++) {
-        if (skills[i].id !== 'skill-1') { // Exclude the central "Skills" circle
+        if (skills[i].id !== 'skill-1') {
             var skill = skills[i].getBoundingClientRect();
             var skillX = skill.left + skill.width / 2;
             var skillY = skill.top + skill.height / 2;
@@ -99,10 +96,32 @@ function drawLines() {
             line.setAttribute('x2', skillX);
             line.setAttribute('y2', skillY);
             line.setAttribute('stroke', 'white');
+            line.id = 'line-' + skills[i].id;
             svg.appendChild(line);
-        }
-    }     
+        }  
+    }
+
+    for (var i = 0; i < skills.length; i++) {
+        skills[i].addEventListener('mouseover', function() {
+            var lines = document.getElementsByTagName('line');
+            for (var j = 0; j < lines.length; j++) {
+                lines[j].classList.add('dimmed');
+            }
+
+            var line = document.getElementById('line-' + this.id);
+            line.classList.remove('dimmed');
+        });
+
+        skills[i].addEventListener('mouseout', function() {
+            var lines = document.getElementsByTagName('line');
+            for (var j = 0; j < lines.length; j++) {
+                lines[j].classList.remove('dimmed');
+            }
+        });
+    }
 }
+
+
 
 window.onload = function() {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
