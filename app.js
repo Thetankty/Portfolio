@@ -15,7 +15,6 @@ function addActiveClass(navItem) {
     navItem.classList.add('active');
 }
 
-// Function to check if an element is in viewport
 function isInViewport(element) {
     var bounding = element.getBoundingClientRect();
     return (
@@ -26,7 +25,6 @@ function isInViewport(element) {
     );
 }
 
-// Function to update the active nav item
 function updateActiveNavItem() {
     for (var i = 0; i < navItems.length; i++) {
         var navItem = navItems[i];
