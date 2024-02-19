@@ -132,8 +132,8 @@ nav {
     background: linear-gradient(45deg, #7017A4 0%, #144E75 100%);
     animation: rotate 20s  infinite;
     z-index: -2;
-    filter: blur(200px);
-    -webkit-filter(200px);
+    filter: blur(140px);
+    -webkit-blur: 140px;
 }
 
 #profile{
