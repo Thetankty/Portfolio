@@ -77,8 +77,6 @@ function drawLines() {
         svg.removeChild(svg.firstChild);
     }
 
-    // Removed the viewport check
-
     var centerSkill = document.getElementById('skill-1').getBoundingClientRect();
     var centerX = centerSkill.left + centerSkill.width / 2;
     var centerY = centerSkill.top + centerSkill.height / 2;
@@ -103,19 +101,23 @@ function drawLines() {
 
     for (var i = 0; i < skills.length; i++) {
         skills[i].addEventListener('mouseover', function() {
-            var lines = document.getElementsByTagName('line');
-            for (var j = 0; j < lines.length; j++) {
-                lines[j].classList.add('dimmed');
-            }
+            if (this.id !== 'skill-1') { 
+                var lines = document.getElementsByTagName('line');
+                for (var j = 0; j < lines.length; j++) {
+                    lines[j].classList.add('dimmed');
+                }
 
-            var line = document.getElementById('line-' + this.id);
-            line.classList.remove('dimmed');
+                var line = document.getElementById('line-' + this.id);
+                line.classList.remove('dimmed');
+            }
         });
 
         skills[i].addEventListener('mouseout', function() {
-            var lines = document.getElementsByTagName('line');
-            for (var j = 0; j < lines.length; j++) {
-                lines[j].classList.remove('dimmed');
+            if (this.id !== 'skill-1') {
+                var lines = document.getElementsByTagName('line');
+                for (var j = 0; j < lines.length; j++) {
+                    lines[j].classList.remove('dimmed');
+                }
             }
         });
     }

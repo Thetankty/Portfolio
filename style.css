@@ -5,7 +5,7 @@
 
 *  {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Nohemi, Arial, sans-serif;
     color:#f4f4f4
 }
 
@@ -20,6 +20,7 @@ body{
     /*background: linear-gradient(45deg, #7017A4 0%, #144E75 100%);*/
     background-color: black;
     background-size:cover;
+
     background-attachment: fixed;
 }
 
@@ -132,6 +133,7 @@ nav {
     animation: rotate 20s  infinite;
     z-index: -2;
     filter: blur(200px);
+    -webkit-filter(200px);
 }
 
 #profile{
@@ -331,6 +333,33 @@ nav {
         object-fit: cover;
     }
 
+    .skill-tree {
+        height: auto;
+        padding: 100px 0; 
+    }
+
+    .skill {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+    }
+
+    .skill:nth-child(2) { transform: rotate(0deg) translate(200px) rotate(0deg); }
+    .skill:nth-child(3) { transform: rotate(72deg) translate(150px) rotate(-72deg); }
+    .skill:nth-child(4) { transform: rotate(144deg) translate(200px) rotate(-144deg); }
+    .skill:nth-child(5) { transform: rotate(216deg) translate(150px) rotate(-216deg); }
+    .skill:nth-child(6) { transform: rotate(288deg) translate(100px) rotate(-288deg); }
+    .skill:nth-child(7) { transform: rotate(700deg) translate(250px) rotate(-700deg); }
+    .skill:nth-child(8) { transform: rotate(432deg) translate(300px) rotate(-432deg); }
+
+    .skill:nth-child(2):hover { transform: rotate(0deg) translate(200px) rotate(0deg) scale(1.2); }
+    .skill:nth-child(3):hover { transform: rotate(72deg) translate(150px) rotate(-72deg) scale(1.2); }
+    .skill:nth-child(4):hover { transform: rotate(144deg) translate(200px) rotate(-144deg) scale(1.2); }
+    .skill:nth-child(5):hover { transform: rotate(216deg) translate(150px) rotate(-216deg) scale(1.2); }
+    .skill:nth-child(6):hover { transform: rotate(288deg) translate(100px) rotate(-288deg) scale(1.2); }
+    .skill:nth-child(7):hover { transform: rotate(700deg) translate(250px) rotate(-700deg) scale(1.2); }
+    .skill:nth-child(8):hover { transform: rotate(432deg) translate(300px) rotate(-432deg) scale(1.2); }
+
     
 }
 
@@ -367,35 +396,15 @@ line.dimmed {
     background-color: rgb(0, 0, 0);
     position: absolute;
     transform: scale(1);
+    transition: filter 300ms;
 }
+
 
 #skill-1 {
     font-size: 24px;
     width: 130px;   
     height: 130px;
 }
-
-.skill[data-tooltip]:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    left: 100%;
-    margin-left: 10px;
-    display: block;
-    background-color: #73737351;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    white-space: normal;
-}
-
-.skill[data-tooltip="C"]:hover::after,
-.skill[data-tooltip="SwiftUI"]:hover::after {
-    left: auto;
-    right: 100%;
-    margin-left: 0;
-    margin-right: 10px;
-}
-
 
 .skill:nth-child(2) { transform: rotate(0deg) translate(400px) rotate(0deg); } 
 .skill:nth-child(3) { transform: rotate(72deg) translate(300px) rotate(-72deg); } 
@@ -416,14 +425,13 @@ line.dimmed {
     transition: transform 0.3s ease-in-out;
 }
 
-.skill{
-    transition: filter 300ms;
+#skill-1:hover {
+    filter: none;
 }
 
-.skill-tree:has(.skill:hover)
-.skill:not(:hover) {
-    filter: 
-    grayscale(100%) brightness(50%);
+
+.skill-tree:has(.skill:hover) .skill:not(:hover) {
+    filter: grayscale(100%) brightness(50%);
 }
 
 .skill:first-child {
@@ -449,32 +457,28 @@ line.dimmed {
 
 
 @media (max-width: 600px) {
-    .skill-tree {
-        height: auto;
-        padding: 100px 0; 
-    }
+  
+}
 
-    .skill {
-        width: 50px;
-        height: 50px;
-        font-size: 12px;
-    }
 
-    .skill:nth-child(2) { transform: rotate(0deg) translate(200px) rotate(0deg); }
-    .skill:nth-child(3) { transform: rotate(72deg) translate(150px) rotate(-72deg); }
-    .skill:nth-child(4) { transform: rotate(144deg) translate(200px) rotate(-144deg); }
-    .skill:nth-child(5) { transform: rotate(216deg) translate(150px) rotate(-216deg); }
-    .skill:nth-child(6) { transform: rotate(288deg) translate(100px) rotate(-288deg); }
-    .skill:nth-child(7) { transform: rotate(700deg) translate(250px) rotate(-700deg); }
-    .skill:nth-child(8) { transform: rotate(432deg) translate(300px) rotate(-432deg); }
+.skill[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 100%;
+    margin-left: 10px;
+    display: block;
+    background-color: #73737351;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: normal;
+}
 
-    .skill:nth-child(2):hover { transform: rotate(0deg) translate(200px) rotate(0deg) scale(1.2); }
-    .skill:nth-child(3):hover { transform: rotate(72deg) translate(150px) rotate(-72deg) scale(1.2); }
-    .skill:nth-child(4):hover { transform: rotate(144deg) translate(200px) rotate(-144deg) scale(1.2); }
-    .skill:nth-child(5):hover { transform: rotate(216deg) translate(150px) rotate(-216deg) scale(1.2); }
-    .skill:nth-child(6):hover { transform: rotate(288deg) translate(100px) rotate(-288deg) scale(1.2); }
-    .skill:nth-child(7):hover { transform: rotate(700deg) translate(250px) rotate(-700deg) scale(1.2); }
-    .skill:nth-child(8):hover { transform: rotate(432deg) translate(300px) rotate(-432deg) scale(1.2); }
+.skill[data-tooltip="SwiftUI"]:hover::after {
+    left: auto;
+    right: 100%;
+    margin-left: 0;
+    margin-right: 10px;
 }
 
 .skill[data-tooltip="C"]:hover::after {
@@ -483,6 +487,7 @@ line.dimmed {
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 10px;
+    margin-left: 0px
 }
 
 
@@ -513,8 +518,4 @@ line.dimmed {
     margin-right: 10px;
 }
 
-.skill[data-tooltip="C"]:hover::after,
-.skill[data-tooltip="SwiftUI"]:hover::after {
-white-space: normal;
-width: 70px; 
-}
+
