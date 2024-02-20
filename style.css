@@ -31,7 +31,7 @@ h1{
 nav {
     height: 60px;
     /*background: linear-gradient(45deg, #7017A4 0%, #144E75 100%);*/
-    position: sticky;
+    position: fixed;
     width: 100%;
     top: 0;
     z-index: 100;
@@ -211,6 +211,7 @@ nav {
     align-items:baseline;
 }
 
+
 @keyframes slideLeft {
     from {
         transform: translateX(150%);
@@ -363,6 +364,8 @@ nav {
     
 }
 
+/* Skill Tree */
+
 .skill-tree {
     display: flex;
     justify-content: center;
@@ -378,7 +381,7 @@ line {
 }
 
 line.dimmed {
-    stroke-opacity: 0.5; /* Change this to make the lines more or less dimmed */
+    stroke-opacity: 0.5;
 }
 
 .skill {
@@ -519,3 +522,103 @@ line.dimmed {
 }
 
 
+
+/*Portfolio*/
+
+#portfolio{
+    font-size: 36px;
+    margin-left: 30px;
+    margin-top: 100px;
+}
+
+#portfolio-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: flex-start;
+    width: 500px;
+    height: 345px;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.portfolio-item {
+    transition: filter 300ms;
+}
+
+.portfolio-container:has(.portfolio-item:hover)
+.portfolio-item:not(:hover) {
+    filter: brightness(0.5);
+}
+
+.portfolio-rectangle {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    height: 68px;
+    align-content: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.portfolio-rectangle h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    padding: 20px;
+}
+
+.portfolio-rectangle a {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    padding: 20px;
+    text-decoration: none;  
+    color: white;  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.portfolio-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto;
+}
