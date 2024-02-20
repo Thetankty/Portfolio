@@ -139,3 +139,45 @@ window.onload = function() {
 
 window.onresize = drawLines;
 window.onscroll = drawLines;
+
+
+
+//Scroll Limiter
+
+let scrolling = false;
+
+window.addEventListener('wheel', function(event) {
+    if (!scrolling) {
+        scrolling = true;
+        const deltaY = event.deltaY;
+        const slides = document.querySelectorAll('.slides');
+        let activeSlide = null;
+
+        slides.forEach(slide => {
+            const rect = slide.getBoundingClientRect();
+            if (
+                (deltaY > 0 && rect.top < window.innerHeight / 2) ||
+                (deltaY < 0 && rect.bottom > window.innerHeight / 2)
+            ) {
+                activeSlide = slide;
+            }
+        });
+
+        if (activeSlide) {
+            const scrollAmount = activeSlide.scrollHeight - activeSlide.clientHeight;
+            if (
+                (deltaY > 0 && activeSlide.scrollTop < scrollAmount) ||
+                (deltaY < 0 && activeSlide.scrollTop > 0)
+            ) {
+                event.preventDefault();
+                activeSlide.scrollTop += deltaY;
+            }
+        }
+
+        setTimeout(() => {
+            scrolling = false;
+        }, 200); // Adjust delay as needed
+    } else {
+        event.preventDefault();
+    }
+});
