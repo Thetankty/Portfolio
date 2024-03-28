@@ -1,0 +1,396 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Variables */
+  :root {
+    --primary: #0070c9;
+    --secondary: #fff;
+    --text: #1d1d1f;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  
+    /* Dark mode */
+    --primary-dark: #0070c9;
+    --secondary-dark: #1d1d1f;
+    --text-dark: #fff;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: var(--primary-dark);
+      --secondary: var(--secondary-dark);
+      --text: var(--text-dark);
+    }
+  }
+  
+  
+  /* Base Styles */
+  body {
+    background-color: var(--secondary);
+    font-family: var(--font);
+    color: var(--text);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .Container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .Section {
+    padding: 80px 0;
+  }
+  
+  .SectionHeading {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  /* Header */
+  .Header {
+    background-color: var(--secondary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .Nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .NavLogo {
+    font-size: 24px;
+    font-weight: 700;
+    padding-left: 15px;
+  }
+  
+  .NavList {
+    display: flex;
+    list-style: none;
+  }
+  
+  .NavItem:not(:last-child) {
+    margin-right: 20px;
+  }
+  
+  .NavLink {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    transition: color 0.3s;
+  }
+  
+  .NavLinkActive,
+  .NavLink:hover {
+    color: var(--primary);
+  }
+  
+  /* Home */
+  .SectionHome {
+    background-color: var(--secondary);
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 64px);
+  }
+  
+  .HomeContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+  }
+  
+  .HomeImage {
+    max-width: 400px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .HomeHeading {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .HomeName {
+    color: var(--primary);
+  }
+  
+  .HomeDescription {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .HomeSocial {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .HomeSocial a {
+    font-size: 30px;
+    transition: color 0.3s;
+    border: 2px solid var(--text);
+    margin-right: 10px; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px; 
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  
+  .HomeSocial a:hover {
+    color: var(--secondary);
+    background-color: var(--text);
+    box-shadow: 0px 0px 30px 2px var(--text);
+  }
+  
+  /* About */
+  
+  .AboutContent {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+  
+  .AboutText {
+    flex: 1 1 50%; /* Occupy at least 50% of the available width */
+    max-width: 800px; /* Set a maximum width for the text */
+    overflow: hidden;
+  }
+  
+  .AboutImage {
+    flex: 0 0 auto; /* Prevent the image from growing or shrinking */
+    max-width: 400px; /* Set a maximum width for the image */
+    width: 100%; /* Ensure the image takes up the full available width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .AboutDescription {
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  
+  .AboutDescription.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Skills */
+  .SkillsContent {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .Skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  
+  .SkillName {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  /* Portfolio */
+  .PortfolioContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+  }
+  
+  .PortfolioItem {
+    background-color: var(--secondary);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: filter 300ms;
+  }
+  
+  .PortfolioItem:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+  
+  .PortfolioContainer:has(.PortfolioItem:hover) .PortfolioItem:not(:hover) {
+    filter: brightness(0.5);
+  }
+  
+  .PortfolioImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .PortfolioInfo {
+    padding: 20px;
+  }
+  
+  .PortfolioTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .PortfolioLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .PortfolioLink:hover {
+    color: var(--primary);
+  }
+  
+  /* Contact */
+  .ContactContent {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .ContactDescription {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .ContactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .FormGroup {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .FormLabel {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .FormInput,
+  .FormTextarea {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+  
+  .FormInput:focus,
+  .FormTextArea:focus {
+   outline: none;
+   border-color: var(--color-primary);
+  }
+  
+  .FormTextArea {
+   resize: vertical;
+   min-height: 150px;
+  }
+  
+  .FormButton {
+   background-color: var(--color-primary);
+   color: var(--color-secondary);
+   font-size: 16px;
+   font-weight: 500;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+  }
+  
+  .FormButton:hover {
+   background-color: #005b9f;
+  }
+  
+  /* Footer */
+  .Footer {
+   background-color: var(--color-text);
+   color: var(--color-secondary);
+   padding: 20px 0;
+   text-align: center;
+  }
+  
+  .FooterText {
+   font-size: 14px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+   .NavList {
+     display: none;
+   }
+  
+   .HomeContent {
+     flex-direction: column;
+     text-align: center;
+   }
+  
+   .HomeImage {
+     margin-bottom: 0px;
+   }
+  
+   .HomeSocial {
+     justify-content: center;
+   }
+  
+   .AboutContent {
+    flex-direction: column; /* Stack the text and image vertically on smaller screens */
+    gap: 20px;
+  }
+  
+  .AboutText,
+  .AboutImage {
+    max-width: 100%; /* Allow the text and image to take up the full width */
+  }
+  
+  .AboutDescription {
+    max-width: 800px;
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+   .SkillsContent {
+     justify-content: center;
+   }
+  
+   .PortfolioContent {
+     grid-template-columns: 1fr;
+   }
+  }
